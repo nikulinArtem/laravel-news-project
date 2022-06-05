@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/news');
-Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news', [NewsController::class, 'index'])->name('list');
+Route::get('/view', [NewsController::class, 'show'])->name('view');

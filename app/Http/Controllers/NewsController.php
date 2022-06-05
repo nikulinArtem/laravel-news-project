@@ -10,7 +10,25 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $posts = News::all();
-        return view('list');
+        $news = News::query()->orderBy('idate', 'desc')->paginate(5);
+        $page = $news->currentPage();
+
+        return view('news', [
+            "news" => $news,
+            "title" => 'Новости',
+            "pageLinks" => $news->getUrlRange(1, $news->lastPage()),
+            "currentPage" => $page
+        ]);
+    }
+
+    function show()
+    {
+        $id = request()->get('id');
+        $post = News::query()->findOrFail($id);
+//        dump($post);
+        return view('show', [
+            "post" => $post,
+            "title" => 'Новость №'.$id
+        ]);
     }
 }

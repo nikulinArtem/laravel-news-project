@@ -1,0 +1,12 @@
+.purple {
+    background: purple;
+}
+.line-bottom {
+    border-bottom: 2px dotted purple;
+}
+.line-top {
+    border-top: 2px dotted purple;
+}
+p {
+    padding: 0;
+}
